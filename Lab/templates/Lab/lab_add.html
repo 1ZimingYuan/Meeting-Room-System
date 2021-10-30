@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加实验室</title>
+</head>
+<style>
+    label {
+        width: 150px;
+        display: inline-block;
+        text-align: right
+    }
+</style>
+{% load static %}
+<body background="{% static 'images/white_wall.jpg' %}"
+      style="background-repeat:no-repeat;
+background-size: 100% 100%;
+background-attachment:fixed;">
+<h4 align="right">欢迎！<a href="/Lab/account">{{user_name}}</a> &nbsp;<a href="{% url 'lab_log_out' %}">注销</a></h4>
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<div align="center">
+    <h1>请输入要添加的实验室信息</h1>
+    <form action="{% url "lab_add" %}" method="post">
+        {% csrf_token %}
+        <p><label>负责人（导师）:</label><input type="text" name="leader" placeholder="请输入负责人（导师）"></p>
+        <p><label>研究方向:</label><input type="text" name="research_direction" placeholder="请输入研究方向"></p>
+        <p><label>博士生数量（人）:</label><input type="text" name="num_doctors" placeholder="请输入博士生数量"></p>
+        <p><label>硕士生数量（人）:</label><input type="text" name="num_masters" placeholder="请输入硕士生数量"></p>
+        <p><label>总人数（人）:</label><input type="text" name="total_num" placeholder="请输入总人数"></p>
+        <p><label>总研究经费（万元）:</label><input type="text" name="total_found" placeholder="请输入总研究经费"></p>
+        <p><input type="submit" name= "submit" value="提交"> &nbsp &nbsp<input type="submit" name= "submit" value="取消"></p>
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+    <title>会议室借用管理主页</title>
+    {% endblock %}
+    
+</head>
+{% load static %}
+<body background="{% static 'images/ice_sky.jpg' %}"
+style="background-size: 100% 100%;
+background-attachment: fixed;
+background-repeat: no-repeat">
+<h4 align="right">欢迎！<a href="/Lab/account">{{user_name}}</a> &nbsp;<a href="{% url 'lab_log_out' %}">注销</a></h4>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1 align="center">会议室借用管理系统</h1>
+<p align="center">
+<a href="{% url 'school' %}">学院</a>
+<a href="{% url 'research_direction' %}">研究方向</a>
+<a href="{% url 'lab' %}">实验室</a>
+<a href="{% url 'meeting_room' %}">会议室</a>
+
+<!-- <a href="{% url 'xueyu' %}">薛羽组</a> -->
+</p>
+<span>{{ alert|safe }}</span>
+
+{% block table %}
+
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{account_info.user_name}}</title>
+</head>
+<style>
+    label {
+        width: 90px;
+        text-align: right;
+        display: inline-block;
+    }
+</style>
+{% load static %}
+
+<body background="{% static 'images/building_sky1.jpg' %}" style="background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: 100% 100%">
+    <h4 align="right">欢迎！<a href="/Lab/account">{{account_info.user_name}}</a> &nbsp;<a
+            href="{% url 'lab_log_out' %}">注销</a></h4>
+            &nbsp; &nbsp; <h1 align="center">请修改{{account_info.user_name}}的信息！</h1>
+    <div align="center">
+        <form action="{% url 'account'%}" method="post">
+            {% csrf_token %}
+            <p><label for="user_name">用户名：</label>
+                <input type="text" name="user_name" id="user_name" value="{{account_info.user_name}}">
+            </p>
+            <!-- <p>
+                <label for="password">密码：</label>
+                <input type="text" name="password" id="password" value="{{account_info.password}}" >
+            </p> -->
+            <p>
+                <label>性别：</label>
+                <label>男
+                    <input type="radio" name="gender" id="gender" value="男"></label>
+                <label>女
+                    <input type="radio" name="gender" id="gender" value="女"></label>
+            </p>
+            <!-- <p>
+                <label for="gender">性别：</label>
+                <input type="text" name="gender" id="gender"  value="">
+            </p> -->
+
+            <p>
+                <label for="email">邮箱：</label>
+                <input type="text" name="email" id="email" value="{{account_info.email}}">
+            </p>
+            <p>
+                <label for="faculty">院系：</label>
+                <input type="text" name="faculty" id="faculty" value='{{account_info.faculty}}'>
+            </p>
+            <p>
+                <label for="clas">班级：</label>
+                <input type="text" name="clas" id="clas" value="{{account_info.clas}}">
+            </p>
+            <p>
+                <label for="stu_job_number">学号/工号：</label>
+                <input type="text" name="stu_job_number" id="stu_job_number" value="{{account_info.stu_job_number}}">
+            </p>
+            <p>
+                <label for="major">专业：</label>
+                <input type="text" name="major" id="major" value="{{account_info.major}}">
+            </p>
+            <p>
+                <label for="direction">专业方向：</label>
+                <input type="text" name="direction" id="direction" value="{{account_info.direction}}">
+            </p>
+            <p>
+                <label for="identity_class">证件类型：</label>
+                <input type="text" name="identity_class" id="identity_class" value="{{account_info.identity_class}}">
+            </p>
+            <p>
+                <label for="identity">证件号码：</label>
+                <input type="text" name="identity" id="identity" value="{{account_info.identity}}">
+            </p>
+            <p>
+                <label for="phone_number">手机号：</label>
+                <input type="text" name="phone_number" id="phone_number" value="{{account_info.phone_number}}">
+            </p>
+            <p>
+                <input type="submit" value='提交' name="enroll">
+                <input type="submit" value='取消' name="enroll">
+            </p>
+        </form>
+
+    </div>
+</body>
+
+</html>

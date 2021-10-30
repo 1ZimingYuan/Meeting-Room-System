@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加会议室</title>
+</head>
+<style>
+    label {
+        width: 80px;
+        display: inline-block;
+        text-align: right;
+    }
+</style>
+{% load static %}
+<body background="{% static 'images/white_wall.jpg' %}"
+      style="background-repeat:no-repeat;
+        background-size:100% 100%;
+        background-attachment:fixed"
+>
+
+<div align="center">
+    <h4 align="right">欢迎！<a href="/Lab/account">{{user_name}}</a> &nbsp;<a href="{% url 'lab_log_out' %}">注销</a></h4>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 align="center">请输入要添加的会议室信息</h1>
+    <form action="{% url "meeting_room_add" %}" method="post">
+        {% csrf_token %}
+        <p><label>楼名:</label>
+            <input type="text" name="building" placeholder="请输入楼名"></p>
+        <p><label>会议室:</label><input type="text" name="room_number" placeholder="请输入会议室"></p>
+        <p><label>占用日期:</label>
+            日期：<select name="time_range_occupied">
+                {% for i in day %}
+                <option value={{i}}> {{i}} </option>
+                {% endfor %}
+            </select></p>
+            <p> &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 开始时间:<input type="text" name="start_time" placeholder="请输入开始时间"></p>
+            <p> &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 结束时间:<input type="text" name="end_time" placeholder="请输入结束时间"></p>
+        <p><label>占用人:</label><input type="text" name="lab_occupying" placeholder="请输入占用人"></p>
+        <p><label>联系方式:</label><input type="text" name="phone_number" placeholder="请输入联系方式"></p>
+        <p><label>用途:</label><input type="text" name="function" placeholder="请输入用途"></p>
+        <p><input type="submit" name="submit" value="提交"> &nbsp &nbsp<input type="submit" name="submit" value="取消"></p>
+    </form>
+</div>
+
+
+</body>
+</html>

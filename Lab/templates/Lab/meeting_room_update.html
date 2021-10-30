@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更新会议室信息</title>
+</head>
+
+<style>
+    label {
+        width: 70px;
+        display: inline-block;
+        text-align: right;
+    }
+</style>
+{% load static %}
+<body background="{% static 'images/white_wall.jpg' %}"
+      style="background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;">
+<div align="center">
+<h4 align="right">欢迎！<a href="/Lab/account">{{user_name}}</a> &nbsp;<a href="{% url 'lab_log_out' %}">注销</a></h4>
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<h1>请输入会议室更新信息</h1>
+<form action="/Lab/meeting_room_update/{{ m_id }}" method="post">
+    {% csrf_token %}
+    <p>
+        <label for="building">楼号:</label>
+        <input type="text" name="building" value="{{ m.building }}" id="building">
+    </p>
+    <p>
+        <label for="room_number">会议室:</label>
+        <input type="text" name="room_number" value="{{ m.room_number }}" id="room_number">
+    </p>
+   
+    <p>
+        <label for="time_range_occupied">占用日期:</label>
+        <input type="text" name="time_range_occupied" value="{{ date }}" id="time_range_occupied">
+    </p>
+    <p>
+        <label for="start_time">开始时间:</label>
+        <input type="text" name="start_time" value="{{ start_time }}" id="start_time">
+    </p>
+    <p>
+        <label for="end_time">结束时间:</label>
+        <input type="text" name="end_time" value="{{ end_time }}" id="end_time">
+    </p>
+    <p>
+        <label for="lab_occupying">占用人:</label>
+        <input type="text" name="lab_occupying" value="{{ m.lab_occupying }}" id="lab_occupying">
+    </p>
+    <p>
+        <label for="phone_number">联系方式:</label>
+        <input type="text" name="phone_number" value="{{ m.phone_number }}" id="phone_number">
+    </p>
+    <p>
+        <label for="function">用途:</label>
+        <input type="text" name="function" value="{{ m.function }}" id="function">
+
+    </p>
+    <p><input type="submit" name="submit" value="更新"> &nbsp &nbsp<input type="submit" name="submit" value="取消"></p>
+</form>
+</div>
+</body>
+</html>

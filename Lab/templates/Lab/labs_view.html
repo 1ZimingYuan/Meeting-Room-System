@@ -1,0 +1,37 @@
+{% extends 'Lab/person_home.html' %}
+{% block head %}
+    <title>实验室</title>
+{% endblock %}
+
+{% block table %}
+    <table align="center" border="1">
+        <caption>实验室</caption>
+        <tr>
+            <th>负责人（导师）</th>
+            <th>研究方向</th>
+            <th>博士生数量(人)</th>
+            <th>硕士生数量(人)</th>
+            <th>总人数(人)</th>
+            <th>总研究经费（万元）</th>
+            <th>操作</th>
+        </tr>
+        {% for l in lab %}
+            {% if l.is_active == True %}
+                <tr align="center">
+                    <td>{{ l.leader }}</td>
+                    <td>{{ l.research_direction }}</td>
+                    <td>{{ l.num_doctors }}</td>
+                    <td>{{ l.num_masters }}</td>
+                    <td>{{ l.total_num }}</td>
+                    <td>{{ l.total_found }}</td>
+                    <td><a href="/Lab/lab_update/{{ l.id }}">更新</a><a href="/Lab/lab_delete/{{ l.id }}">删除</a></td>
+
+                </tr>
+            {% endif %}
+
+        {% endfor %}
+        <tr>
+            <td align="center" colspan="7"><a href="{% url 'lab_add' %}">添加</a></td>
+        </tr>
+    </table>
+{% endblock %}>

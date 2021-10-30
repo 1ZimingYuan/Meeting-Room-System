@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>薛羽组更新</title>
+</head>
+<style>
+    label {
+        width: 180px;
+        text-align: right;
+        display: inline-block;
+    }
+</style>
+{% load static %}
+<body background="{% static 'images/move.gif' %}"
+      style="background-size: 100% 100%;
+background-attachment: fixed;
+background-repeat: no-repeat;">
+
+<div align="center">
+    <h1>请输入变更的信息</h1>
+    <form action="/Lab/xueyu_update/{{ xy.id }}" method="post">
+        {% csrf_token %}
+        <p><label for="name">姓名：</label>
+            <input type="text" name="name" value="{{ xy.name }}" id="name"></p>
+        <p><label for="age">年龄：</label>
+            <input type="text" name="age" value="{{ xy.age }}" id="age"></p>
+        <p><label for="sex">性别：</label>
+            <input type="text" name="sex" value="{{ xy.sex }}" id="sex"></p>
+        <p><label for="graduate_institution">目前最高学位毕业院校：</label>
+            <input type="text" name="graduate_institution" value="{{ xy.graduate_institution }}"
+                   id="graduate_institution"></p>
+        <p><label for="positions">职位：</label>
+            <input type="text" name="positions" value='{{ xy.positions }}' id="positions"></p>
+        <p><label for="title">职称：</label>
+            <input type="text" name="title" value="{{ xy.title }}" id="title"></p>
+            <p><label for="direction">研究方向：</label>
+                <input type="text" name="direction" value="{{ xy.direction }}" id="direction"></p>
+        <p><label for="degree">正在研修的学位：</label>
+            <input type="text" name="degree" value="{{ xy.degree }}" id="degree"></p>
+        <p><input type="submit" value="提交"></p>
+    </form>
+</div>
+</body>
+</html>

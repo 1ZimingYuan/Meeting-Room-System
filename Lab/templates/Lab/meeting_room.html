@@ -1,0 +1,37 @@
+{% extends 'Lab/person_home.html' %}
+{% block head %}
+    <title>会议室</title>
+{% endblock %}
+
+{% block table %}
+    <table align="center" border="1">
+        <caption>会议室</caption>
+        <tr>
+            <th>楼名</th>
+            <th>会议室</th>
+            <th>占用日期</th>
+            <th>占用人</th>
+            <th>用途</th>
+            <th>联系方式</th>
+            <th>操作</th>
+        </tr>
+        {% for m in met %}
+            {% if m.is_active == True %}
+                <tr align="center">
+                    <td>{{ m.building }}</td>
+                    <td>{{ m.room_number }}</td>
+                    <td>{{ m.time_range_occupied }}</td>
+                    <!-- <td><a href="/Lab/薛羽">{{ m.lab_occupying }}</a></td> -->
+                    <td>{{ m.lab_occupying }}</td>
+                    <td>{{ m.function }}</td>
+                    <td>{{ m.phone_number }}</td>
+                    <td><a href="/Lab/meeting_room_update/{{ m.id }}">更新</a> <a href="/Lab/meeting_room_delete/{{ m.id }}">删除</a></td>
+                </tr>
+            {% endif %}
+
+        {% endfor %}
+        <tr>
+            <td align="center" colspan="8"><a href="{% url 'meeting_room_add' %}">添加</a></td>
+        </tr>
+    </table>
+{% endblock %}

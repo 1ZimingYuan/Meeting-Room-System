@@ -1,0 +1,42 @@
+{% extends 'Lab/person_home.html' %}
+{% block head %}
+    <title>薛羽组</title>
+{% endblock %}
+
+{% block table %}
+    <table align="center" border="1">
+        <caption>薛羽组</caption>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>毕业于</th>
+            <th>职位</th>
+            <th>职称</th>
+            <th>研究方向</th>
+            <th>正在研修的学位</th>
+            <th>操作</th>
+        </tr>
+        {% for x in xue %}
+            {% if x.is_active == True %}
+
+
+            <tr align="center">
+                <td>{{ x.name }}</td>
+                <td>{{ x.age }}</td>
+                <td>{{ x.sex }}</td>
+                <td>{{ x.graduate_institution }}</td>
+                <td>{{ x.positions }}</td>
+                <td>{{ x.title }}</td>
+                <td>{{ x.direction }}</td>
+                <td>{{ x.degree }}</td>
+                <td><a href="/Lab/xueyu_update/{{ x.id }}">更新</a><a href="/Lab/xueyu_delete/{{ x.id }}">删除</a></td>
+
+            </tr>
+            {% endif %}
+        {% endfor %}
+        <tr>
+            <td align="center" colspan="9"><a href="{% url 'xueyu_add' %}">添加</a></td>
+        </tr>
+    </table>
+{% endblock %}

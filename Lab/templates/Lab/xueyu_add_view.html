@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>薛羽组添加</title>
+    <style>
+        label {
+        width: 180px;
+        display: inline-block;
+            text-align: right;
+        }
+    </style>
+</head>
+{% load static %}
+<body background="{% static 'images/ice_tree.jpg' %}"
+      style="background-size: 100% 100%;
+background-attachment: fixed;
+background-repeat:no-repeat;">
+
+
+<div align="center">
+    <h1>请输入要添加的人员信息</h1>
+    <form action="{% url "xueyu_add" %}" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="name">姓名:</label>
+            <input type="text" name="name" id="name">
+        </p>
+        <p>
+            <label for="age">年龄:</label>
+            <input type="text" name="age" id="age">
+        </p>
+        <p>
+            <label for="">性别：</labelfor>
+            <span>男</span>
+            <input type="radio" name="sex" value="男" id="male">
+
+            <span>女</span>
+            <input type="radio" name="sex" value="女" id="female">
+
+        </p>
+        <p>
+            <label for="graduate_institution">目前最高学位毕业院校:</label>
+            <input type="text" name="graduate_institution" id="graduate_institution" width="550px">
+        </p>
+        <p>
+            <label for="position">职位:</label>
+            <input type="text" name="positions" id="position">
+        </p>
+        <p>
+            <label for="title">职称:</label>
+            <input type="text" name="title" id="title">
+        </p>
+        <p>
+            <label for="degree">正在研修的学位:</label>
+            <input type="text" name="degree" id="degree">
+        </p>
+        <p><input type="submit" value="提交"></p>
+    </form>
+{#    <embed src="{% static 'music/music.mp3' %}" hidden="true" autostart="true" loop="true">#}
+    <audio src="{% static 'music/music.mp3' %}" autoplay="autoplay"  loop="loop" preload="auto"></audio>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加学院信息</title>
+</head>
+<style>
+    label {
+        width: 90px;
+        display: inline-block;
+        text-align: right;
+    }
+</style>
+{% load static %}
+<body background="{% static 'images/white_wall.jpg' %}"
+      style="background-repeat:no-repeat;
+            background-size:100% 100%;
+            background-attachment:fixed"
+>
+<h4 align="right">欢迎！<a href="/Lab/account">{{user_name}}</a> &nbsp;<a href="{% url 'lab_log_out' %}">注销</a></h4>
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+<div align="center">
+    
+    <h1>请输入添加的学院信息</h1>
+    <form action="{% url "school_add" %}" method="post">
+        {% csrf_token %}
+        <p><label>学院名称:</label><input type="text" name="school_name" placeholder="请输入学院名称"></p>
+        <p><label>院长:</label><input type="text" name="leader" placeholder="请输入院长姓名"></p>
+        <p><label>教职工数量:</label><input type="text" name="num_faculty" placeholder="请输入教职工数量"></p>
+        <p><label>学生数量:</label><input type="text" name="num_student" placeholder="请输入学生数量"></p>
+        <p><input type="submit" name='button' value="提交">  &nbsp &nbsp<input type="submit" name='button' value="取消"></p>
+    </form>
+</div>
+
+</body>
+</html>

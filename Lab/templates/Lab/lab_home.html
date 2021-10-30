@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>会议室借用管理系统</title>
+</head>
+{% load static %}
+<body background="{% static 'images/discuss.jpg' %}"
+style="background-size: 100% 100%;
+background-repeat: no-repeat;
+background-attachment: fixed">
+
+
+<div align="center">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>欢迎来到会议室借用管理系统！</h1>
+    <p>
+        <a href="{% url 'lab_log' %}">登录账号</a>
+        <a href="{% url 'enroll' %}">注册新账号</a>
+    </p>
+</div>'
+</body>
+</html>

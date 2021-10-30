@@ -1,0 +1,35 @@
+{% extends 'Lab/person_home.html' %}
+{% block head %}
+    <title>研究方向</title>
+{% endblock %}
+
+{% block table %}
+    <table align="center" border="1">
+        <caption>研究方向</caption>
+        <tr>
+            <th>研究方向</th>
+            <th>所涉院系</th>
+            <th>所涉实验组数量</th>
+            <th>所涉研究人员数量(人)</th>
+            <th>总科研经费</th>
+            <th>操作</th>
+        </tr>
+        {% for r in red %}
+            {% if r.is_active == True %}
+                <tr align="center">
+                    <td>{{ r.study_dire }}</td>
+                    <td>{{ r.school_included }}</td>
+                    <td>{{ r.labs_included }}</td>
+                    <td>{{ r.num_researcher }}</td>
+                    <td>{{ r.research_founds }}</td>
+                    <td><a href="/Lab/res_update/{{ r.id }}">更新</a><a href="/Lab/res_delete/{{ r.id }}">删除</a></td>
+
+                </tr>
+            {% endif %}
+
+        {% endfor %}
+        <tr>
+            <td align="center" colspan="6"><a href="{% url 'res_add' %}">添加</a></td>
+        </tr>
+    </table>
+{% endblock %}
